@@ -26,26 +26,7 @@ If you just want to run a single instance of MaxScale server to try out its func
 
 ## Build the container
 
-To create the image `asosso/maxscale`, execute the following command on the maxscale-docker folder:
+To create the image `centminmod/maxscale-docker`, execute the following command on the maxscale-docker folder:
 
     docker build -t centminmod/maxscale-docker .
 
-## Thanks
-
-* [MaxScale](https://github.com/mariadb-corporation/MaxScale) - for its MySQL Proxy
-* [@MassimilianoPinto](https://github.com/MassimilianoPinto) - for his collaboration with my company
-
-## Contribute
-
-Contributions are welcome.
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
-
-## License
-
-Copyright 2015 Andrea Sosso
-Licensed under the MIT License
