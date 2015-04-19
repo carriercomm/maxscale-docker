@@ -14,7 +14,7 @@ Base [docker image](http://www.docker.io) to run a [MaxScale](https://mariadb.co
 
 The container is very small and available on the Docker Index:
 
-    docker pull asosso/maxscale
+    docker pull centminmod/maxscale-docker
 
 ## Using the container
 
@@ -22,13 +22,13 @@ Just trying out MaxScale.
 
 If you just want to run a single instance of MaxScale server to try out its functionality:
 
-    docker run -d asosso/maxscale
+    docker run -d centminmod/maxscale-docker
 
 ## Build the container
 
 To create the image `asosso/maxscale`, execute the following command on the maxscale-docker folder:
 
-    docker build -t asosso/maxscale .
+    docker build -t centminmod/maxscale-docker .
 
 ## Thanks
 
