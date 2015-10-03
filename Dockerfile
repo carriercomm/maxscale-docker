@@ -1,21 +1,21 @@
-FROM centos:6.6
+FROM centos:6.7
 MAINTAINER George Liu <https://github.com/centminmod/maxscale-docker>
 
 RUN     rpm --import https://yum.mariadb.org/RPM-GPG-KEY-MariaDB && \
+		yum -y install https://downloads.mariadb.com/enterprise/yzsw-dthq/generate/10.0/mariadb-enterprise-repository.rpm && \
         yum -y update && \
-        yum -y install libedit libaio && \
-        rpm -i https://downloads.mariadb.com/software/mariadb-maxscale/configure-maxscale-repo-0.1.2.rpm && \
         yum -y install maxscale && \
-        yum clean all && \
-        cp /usr/local/mariadb-maxscale/etc/MaxScale_template.cnf /usr/local/mariadb-maxscale/etc/MaxScale.cnf
+        yum clean all
 
-# ENVironment variable
-ENV MAXSCALE_HOME /usr/local/mariadb-maxscale
+# Move configuration file in directory for exports
+RUN     mkdir -p /etc/maxscale.d && \
+        mv /etc/maxscale.cnf /etc/maxscale.d && \
+        ln -s /etc/maxscale.d/maxscale.cnf /etc/maxscale.cnf
 
-# VOLUMEs to allow backup of config
-VOLUME  ["/usr/local/mariadb-maxscale"]
+# VOLUME for custom configuration
+VOLUME ["/etc/maxscale.d"]
 
-# EXPOSE default MaxScale ports
+# EXPOSE the MaxScale default ports
 
 ## RW Split Listener
 EXPOSE 4006
@@ -29,5 +29,5 @@ EXPOSE 4442
 ## CLI Listener
 EXPOSE 6603 
 
-# The binary that is being executed
-ENTRYPOINT ["/usr/local/mariadb-maxscale/bin/maxscale", "-d"]
+# Running MaxScale
+ENTRYPOINT ["/usr/bin/maxscale", "-d"]
