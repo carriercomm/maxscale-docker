@@ -9,7 +9,7 @@ RUN     rpm --import https://yum.mariadb.org/RPM-GPG-KEY-MariaDB && \
 
 # Move configuration file in directory for exports
 RUN     mkdir -p /etc/maxscale.d && \
-        mv /etc/maxscale.cnf /etc/maxscale.d && \
+        mv /etc/maxscale.cnf.template /etc/maxscale.d/maxscale.cnf && \
         ln -s /etc/maxscale.d/maxscale.cnf /etc/maxscale.cnf
 
 # VOLUME for custom configuration
