@@ -4,7 +4,7 @@ MAINTAINER George Liu <https://github.com/centminmod/maxscale-docker>
 RUN     rpm --import https://yum.mariadb.org/RPM-GPG-KEY-MariaDB && \
 		yum -y install https://downloads.mariadb.com/enterprise/yzsw-dthq/generate/10.0/mariadb-enterprise-repository.rpm && \
         yum -y update && \
-        yum -y install maxscale && \
+        yum -y install maxscale && rpm -ql maxscale \
         yum clean all
 
 # Move configuration file in directory for exports
